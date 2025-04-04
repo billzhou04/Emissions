@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Hat vs Black Hat: Visualizing GHG Emissions</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>White Hat vs Black Hat: Visualizing Greenhouse Gas Emissions</h1>
+
+        <div class="intro">
+            <p>
+                Our development process first started with selecting which of the four provided datasets to use. We agreed on the emissions dataset 
+                because we thought that there would be many ways to manipulate data to misrepresent trends. Work was split among the team members, 
+                with both contributing to the ideas, code, suggestions, and writeups. The development process included the phases: planning, coding, 
+                debugging, modifying, and many testing sessions. The total people hours amounted to around 20. A lot of time was spent planning the 
+                black hat visualization. It was more difficult than expected to create a bad or misleading visualization, and coming up with clever 
+                ways to skew or misrepresent the data without actually lying about it took up a bulk of the project. 
+
+            </p>
+            <p>This is a page where we are seeing two visualizations. One visualization is a White Hat Visualization that is a Multi-Line
+                char which compares emission trends across countries. The other visualization is a Black Hat visualization which is a misleading 
+                Stacked Area Chart that has misrepresented the actual date.</p>
+
+            <p><strong>Data Source:</strong> OECD (2024), Air emissions - Greenhouse gas emissions Inventories (indicator). 
+                doi: 10.1787/a489ea32-en (Accessed on July 26, 2024). </p>
+             
+        </div>
+
+        <div class="chart-section">
+            <h2 class="chart-title">White Hat Visualization: Emission Trends with Multi-Line Chart (2014-2021)</h2>
+            <p>This is a line chart displaying the per-capita CO2-equivalent emissions of various countries. It aims to show the general trends of greenhouse gas emissions
+                from 2014 to 2021. The selection of countries was largely random to reduce potential biases in the message - we did not intentially choose countries with large or small emissions. 
+                It should be noted that this visualization does not reflect a country's total emissions, 
+                as the data disregards a country's population. For example, China had the 24th highest CO2 emissions per-capita in 2022, but, because of its large population, 
+                had the largest total emissions by a factor of almost 3 times that of second-place - the US. Source: https://www.worldometers.info/co2-emissions/co2-emissions-per-capita/ 
+            </p>
+            <p>
+                The dataset that we decided to use was derived from the Air emissions - Greenhouse gas emissions Inventories provided by OECD. Because this dataset contains many variables, 
+                we decided to refine it by only focusing on certain metrics. Specifically, our refined dataset spans from 2014-2021, and details the kilogrammes of CO2-equivalent per person 
+                for some selected countries. We decided to use a line chart to represent each country’s per capita emissions over time. Line charts are ideal for showing changes in patterns, 
+                and they enable comparison of data - viewers are able to immediately discern how countries compare in terms of their per capita emissions. Countries were differentiated through 
+                the color of the line representing their emissions. We included a legend to map the country name to its color. Also, we implemented a tooltip - when users hover close to a year 
+                or line, that year is displayed, along with all of the countries’ emissions during that year, with the selected country’s data highlighted. The countries, along with their 
+                corresponding emissions in this tooltip are color coded according to the legend as well. To ensure clarity and accuracy of our visualization, we added a short description that 
+                details some disclaimers to be aware of. This is because we were aware that the information being presented may be initially misinterpreted. For example, viewers may believe 
+                that this visualization reflects a country’s total emission contribution, but that is not accurate. This visualization disregards a country’s population and only considers the 
+                per-capita CO2 equivalent emissions within a country. We also labeled the x and y-axes to align with what the visualization is showing. 
+            </p>
+            
+            <div id="white-hat-vis" class="chart-container"></div>
+        </div>
+
+        <div class="chart-section">
+             <h2 class="chart-title">Black Hat Visualization: Misrepresented Trends with Stacked Area Chart (2014-2021)</h2>
+            <p>
+                The dataset we used in our black hat visualization was the same, but our selection of countries and designs were chosen intentionally to downplay the US’ emissions. The visualization 
+                used is a stacked area chart. This type of visualization is unsuitable for the dataset, namely because adding the per-capita values of countries together does not reveal any meaningful 
+                conclusions - the sum of different countries’ per-capita emissions tells us nothing. Stacked area charts also have a problem of being hard to understand, especially without adequate 
+                descriptions and labels. The data stacked at the top are also increasingly affected by the data below it. For example, Australia actually observed a decrease in its per-capita emissions 
+                from 2020 to 2021, but it appears as though it is increasing because the US, stacked below, saw such a great increase from 2020 to 2021. Thus, the positioning of the countries on the 
+                stacked area charts is intentionally misleading to dishonestly convey that all countries saw an increase in per-capita emissions from 2020 to 2021, when in fact, many did not. Also, 
+                the countries chosen all had similar or greater emissions than the US. This was done to undermine the US’ CO2 emissions, making it seem as if the US was below average in per-capita emissions. 
+                The reality is that the US is reasonably high in per-capita emissions, and is second in total emissions, making this representation very harmful and misleading. Finally, the y-axis label 
+                is intentionally unclear - cumulative emissions are calculated by summing total emissions, not per-capita emissions. As stated before, summing per-capita emissions does not lend itself 
+                to any productive discussions - it means nothing. However, by labeling the y-axis cumulative emissions, viewers are inclined to believe that the visualization is showing four countries’
+                 contributions to global emissions, when this is not the case. In reality, the sum of Canada, Australia, and Kazakhstan’s total emissions combined for only around 25% of the US’ total 
+                 emissions in 2022. This visualization, however, makes it seem as though each country has around the same emissions. We originally thought about skewing the y-axis to misrepresent the 
+                 differences between countries’ emissions, but decided not to, as it would be too obvious to seasoned data visualization viewers.
+                 Source: https://www.worldometers.info/co2-emissions/co2-emissions-per-capita/.
+
+            </p>
+            <div id="black-hat-vis" class="chart-container"></div>
+        </div>
+
+    </div>
+
+    <div id="tooltip"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
