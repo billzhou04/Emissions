@@ -137,6 +137,14 @@ ul {
   opacity: 1.0;
 }
 
+#black-hat-vis .legend-color-box {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
 #black-hat-vis .area-CAN { fill: #d62728; }
 #black-hat-vis .area-AUS { fill: #ff7f0e; }
 #black-hat-vis .area-CHE { fill: #2ca02c; }
